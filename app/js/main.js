@@ -34,7 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (phone) {
     phoneMask.mask(phone);
   }
-
+  if (burgerMenu) {
+    burgerMenu.addEventListener("click", function (e) {
+      this.classList.toggle("__clicked");
+      menu.classList.toggle("__show");
+      e.preventDefault;
+    });
+  }
   const classRemove = (element, removeClass) => {
     const elementClass = document.querySelector("" + element + "");
     if (elementClass) {
@@ -169,5 +175,4 @@ document.addEventListener("DOMContentLoaded", () => {
       popupClose();
     }
   });
-  
 });
