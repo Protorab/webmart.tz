@@ -92,15 +92,17 @@
   justify-content: center;
   z-index: 100500;
   display: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .popup__overlay {
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: #732f0785;
+
   cursor: pointer;
 }
 
@@ -124,7 +126,7 @@ textarea {
   display: flex;
   flex-direction: column;
   background: $mainColor;
-  @include _borderRadius(5px);
+
   @include _transition(all, .1s);
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
