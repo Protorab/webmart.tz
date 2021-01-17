@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const phone = document.querySelector(".telephone");
   const popupForm = document.querySelector("#popup__form");
   const formPopup = document.querySelector(".form__popup");
+  const menuOverlay = document.querySelector(".menu__overlay");
+
   const popupBg = document.querySelectorAll(".popup__overlay");
   const showForm = document.querySelectorAll(".show__form");
   const closePopup = document.querySelectorAll(".close");
@@ -34,11 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (phone) {
     phoneMask.mask(phone);
   }
+  const menuToggle = (burgerMenu, menu, menuOverlay) => {
+    burgerMenu.classList.toggle("__clicked");
+    menu.classList.toggle("__show");
+    menuOverlay.classList.toggle("__show");
+  };
   if (burgerMenu) {
     burgerMenu.addEventListener("click", function (e) {
-      this.classList.toggle("__clicked");
-      menu.classList.toggle("__show");
+      menuToggle(burgerMenu, menu, menuOverlay);
       e.preventDefault;
+    });
+  }
+  if (menuOverlay) {
+    menuOverlay.addEventListener("click", function (e) {
+      menuToggle(burgerMenu, menu, menuOverlay);
+      e.preventDefault();
     });
   }
   const classRemove = (element, removeClass) => {
@@ -55,21 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
         }
       });
-      // sendForm.onsubmit = () => {
-      //   let th = this;
-      //   $.ajax({
-      //     type: "POST",
-      //     url: "../assets/mail.php", //Change
-      //     data: th.serialize(),
-      //   }).done(function () {
-      //     alert("Thank you!");
-      //     setTimeout(function () {
-      //       // Done Functions
-      //       th.trigger("reset");
-      //     }, 1000);
-      //   });
-      //   return false;
-      // };
     });
   }
   $(".send__form").on("submit", function (e) {
@@ -93,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", function () {
     classRemove(".burger__menu.__clicked", "__clicked");
     classRemove(".menu.__show", "__show");
+    classRemove(".menu__overlay.__show", "__show");
   });
 
   if (showForm) {

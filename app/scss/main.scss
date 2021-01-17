@@ -8,7 +8,7 @@
 }
 
 .burger__menu {
-  z-index: 2;
+  z-index: 6;
   display: none;
   width: 40px;
   height: 40px;
@@ -19,9 +19,9 @@
     display: block;
     position: absolute;
     width: 100%;
-    height: 5px;
+    height: 3px;
     background: $accent;
-    @include _borderRadius(5px);
+    // @include _borderRadius(5px);
     @include _transition(all, .5s);
     top: 50%;
     right: 50%;
@@ -34,21 +34,21 @@
   &::after {
     position: absolute;
     background: $accent;
-    @include _borderRadius(5px);
+    // @include _borderRadius(5px);
     @include _transition(all, .5s);
     width: 100%;
-    height: 5px;
+    height: 3px;
     display: block;
     content: '';
   }
 
   &::before {
-    top: 3px;
+    top: 5px;
     // left: 0;
   }
 
   &::after {
-    bottom: 3px;
+    bottom: 5px;
     // left: 0;
   }
 
@@ -60,7 +60,7 @@
 
     &::before {
       transform: rotate(-225deg);
-      top: 17.5px;
+      top: 18.5px;
     }
 
     &::after {
@@ -257,6 +257,55 @@ textarea {
       margin-right: 0;
     }
   }
+
+  @media only screen and (max-width : 1024px) {
+    position: fixed;
+    height: 100%;
+    min-height: 100vh;
+    width: 60%;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 10% 0;
+    background: $mainColor;
+    align-items: center;
+    @include _transition(all, .5s);
+    transform: translate(200%, 0%);
+  }
+
+  @media only screen and (max-width : 600px) {
+    width: 85%;
+
+  }
+
+  &__overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    background: #732f0785;
+    z-index: 5;
+    left: 0%;
+    top: 0;
+    backdrop-filter: blur(10px);
+    @include _transition(all, .5s);
+    opacity: 0;
+    // transition-delay: .5s;
+    cursor: pointer;
+    pointer-events: none;
+
+    &.__show {
+      pointer-events: all;
+
+      opacity: 1;
+    }
+  }
+
+  &.__show {
+    transform: translate(0, 0);
+  }
 }
 
 .contacts {
@@ -283,8 +332,26 @@ textarea {
   text-transform: uppercase;
   font-weight: bold;
 
+  // .btn-header__btn
   &-header__btn {
     max-width: 145px;
+  }
+
+  // .btn-desktop__btn
+  &.desktop {
+    @media only screen and (max-width : 600px) {
+      display: none;
+    }
+
+  }
+
+  &.mobile {
+    display: none;
+
+    @media only screen and (max-width : 600px) {
+      display: flex;
+    }
+
   }
 
   &:hover {
@@ -330,6 +397,18 @@ textarea {
       object-fit: cover;
       object-position: center;
     }
+
+    @media only screen and (max-width : 900px) and (orientation:landscape) {
+      flex-direction: column;
+      padding-right: 0px;
+    }
+
+    @media only screen and (max-width : 600px) {
+      flex-direction: column;
+      padding-right: 0px;
+
+    }
+
   }
 
   // .top__col
@@ -340,10 +419,28 @@ textarea {
     &:nth-child(1) {
       width: 60%;
 
+      @media only screen and (max-width : 900px) and (orientation:landscape) {
+        width: 100%;
+
+      }
+
+      @media only screen and (max-width : 600px) {
+        width: 100%;
+      }
+
     }
 
     &:nth-child(2) {
       width: 38%;
+
+      @media only screen and (max-width : 900px) and (orientation:landscape) {
+        display: none;
+
+      }
+
+      @media only screen and (max-width : 600px) {
+        display: none;
+      }
 
     }
 
@@ -353,15 +450,16 @@ textarea {
       height: 95%;
       background: #000;
 
-      // top__col-img__bottom
+      // .top__col-img__bottom
       &__bottom {
         width: 100%;
         height: 400px;
+
+        @media only screen and (max-width : 600px) {
+          height: 200px;
+        }
       }
     }
-
-
-
   }
 
   // .top__content
@@ -377,11 +475,21 @@ textarea {
       margin-top: 25px;
       margin-right: 25px;
       margin-left: 25px;
+
+      @media only screen and (max-width : 600px) {
+        display: none;
+      }
+
     }
 
     // .top__content-text
 
-    &-text {}
+    &-text {
+      @media only screen and (max-width : 600px) {
+        width: 100%;
+      }
+
+    }
 
     // .top__content-more
 
@@ -473,6 +581,23 @@ textarea {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 25px;
     padding: 0 65px 0 25px;
+
+    @media only screen and (max-width : 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    @media only screen and (max-width : 900px) and (orientation:landscape) {
+      padding: 0px 25px;
+
+    }
+
+    @media only screen and (max-width : 600px) {
+      grid-template-columns: repeat(1, 100%);
+      padding: 0px 25px;
+
+    }
+
   }
 
   // .services__item
@@ -534,6 +659,15 @@ textarea {
       }
 
     }
+
+    @media only screen and (max-width : 900px) and (orientation:landscape) {
+      height: 350px;
+    }
+
+    @media only screen and (max-width : 600px) {
+      height: 200px;
+    }
+
   }
 
 
@@ -553,6 +687,7 @@ textarea {
   &__wrapper {
     padding-right: 40px;
     align-items: center;
+    position: relative;
 
     &:before {
       position: absolute;
@@ -564,8 +699,22 @@ textarea {
       height: 90%;
       background: #732f0744;
       z-index: -1;
-      transform: translate(0, -50%) // @include _borderRadius(5px);
+      transform: translate(0, -50%);
     }
+
+    @media only screen and (max-width : 600px) {
+      flex-direction: column;
+      padding-right: 00px;
+      padding: 0 25px;
+
+      &:before {
+        width: 100%;
+        top: -25px;
+        transform: translate(0, 0%);
+      }
+
+    }
+
   }
 
   // .new_service__content
@@ -575,6 +724,11 @@ textarea {
     flex-direction: column;
     min-width: 46%;
     width: 46%;
+
+    @media only screen and (max-width : 600px) {
+      width: 100%;
+    }
+
   }
 
   // .new_service__title
@@ -605,10 +759,44 @@ textarea {
       &:nth-child(2) {
         width: 74%;
       }
+
+      @media only screen and (max-width : 600px) {
+        flex-direction: row;
+
+        &:nth-child(1) {
+          margin-bottom: 25px;
+        }
+
+        &:nth-child(2) {
+          margin-bottom: 15px;
+        }
+
+        &:nth-child(1),
+        &:nth-child(2) {
+          justify-content: space-between;
+          width: 100%;
+          height: fit-content;
+        }
+
+      }
+
     }
 
     // .new_service__info-date
-    &-date {}
+    &-date {
+      font-size: 12px;
+      margin-bottom: 10px;
+
+      @media only screen and (max-width : 600px) {
+        margin-bottom: 0;
+      }
+
+    }
+
+    @media only screen and (max-width : 600px) {
+      flex-direction: column-reverse;
+    }
+
   }
 
   // .new_service__img
@@ -624,5 +812,11 @@ textarea {
       object-fit: cover;
       object-position: center;
     }
+
+    @media only screen and (max-width : 600px) {
+      width: 100%;
+      height: 250px;
+    }
+
   }
 }
