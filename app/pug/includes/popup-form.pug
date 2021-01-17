@@ -1,0 +1,32 @@
+#popup__form.popup.animate__animated
+  .popup-bg
+  form.send__form.form__popup.animate__animated(action="")
+    .form__popup-close.close__form
+      span
+    input(type="hidden", name="project_name",value="Site Name")
+    input(type="hidden", name="admin_email",value="admin@mail.com")
+    input#popup__subject(type="hidden", name="form_subject",value="Form Subject")
+    input.form__popup-input(
+      required,
+      placeholder="Введите имя",
+      type="text",
+      name="Имя",
+      )
+    input.form__popup-input.telephone(
+      required,
+      placeholder="Введите телефон",
+      type="phone",
+      name="Телефон",
+      )
+    input.form__popup-input(
+      required,
+      placeholder="Введите e-mail",
+      type="email",
+      name="E-mail")
+    textarea.form__popup-input.form__popup-textarea(
+      name="Сообщение",
+      cols="30",
+      rows="10",
+      placeholder="Введите текст")
+    input#popup__form-submit(type="submit")
+    label.form__popup-btn.btn(for="popup__form-submit") Отправить
